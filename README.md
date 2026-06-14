@@ -1,144 +1,280 @@
-# AI Resume Analyzer
+# AI-Powered Resume ATS Analyzer
 
-AI-powered web application that analyzes resumes and provides ATS-style feedback, keyword matching, and improvement suggestions.
-
-**Live Demo:** https://ai-resume-analyzer-ivory-psi.vercel.app
-
----
+## Overview
+AI-Powered Resume ATS Analyzer is a full-stack web application that helps students, fresh graduates, and job seekers evaluate their resumes using Generative AI. The platform analyzes resume content, compares it with a target job description, calculates ATS compatibility, identifies missing keywords, and provides actionable recommendations to improve interview readiness.
 
 ## Features
 
-- Analyze a resume by pasting text or uploading a PDF
-- Optional job description for ATS match scoring
-- ATS-style scoring with strengths, weaknesses, and summary
-- Keyword match and missing keyword detection
-- AI-generated ATS and general improvement suggestions
-- User authentication with JWT
-- Save, view, and delete past analyses
-- Demo mode (no login required)
+### AI Resume Analysis
+- Analyze resume content using Google Gemini AI
+- Professional resume review and scoring
+- Resume strengths and weaknesses detection
+- Personalized improvement suggestions
+
+### ATS Optimization
+- ATS Match Score calculation
+- Missing keyword identification
+- Matched keyword detection
+- ATS-specific recommendations
+
+### Resume Upload Support
+- PDF resume upload
+- Automatic text extraction from PDF files
+- Manual resume text input
+
+### User Authentication
+- Secure registration and login
+- JWT-based authentication
+- Protected routes and user sessions
+
+### Analysis History
+- Save previous resume analyses
+- Review past reports
+- Track resume improvements over time
+
+### Modern User Experience
+- Responsive UI
+- Dashboard workspace
+- Demo mode
+- Clean and professional design
 
 ---
 
 ## Tech Stack
 
-| Layer | Technologies |
-| --- | --- |
-| Frontend | React 19, Vite, Tailwind CSS, React Router |
-| Backend | Node.js, Express 5 |
-| Database | MongoDB Atlas (Mongoose) |
-| AI | Google Gemini (`gemini-2.5-flash`) |
-| Deployment | Vercel (frontend), Render (backend) |
+### Frontend
+- React 19
+- React Router DOM
+- Vite
+- Tailwind CSS
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+
+### AI & Processing
+- Google Gemini 2.5 Flash
+- PDF Parse
+
+### Authentication
+- JWT
+- bcryptjs
+
+### Deployment
+- Vercel (Frontend)
+- Render (Backend)
+- MongoDB Atlas (Database)
 
 ---
 
-## Prerequisites
+## Project Structure
 
-- Node.js 18+
-- MongoDB Atlas cluster (or local MongoDB)
-- [Google Gemini API key](https://aistudio.google.com/apikey)
-
----
-
-## Local Setup
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/mahir-alam/AI-Resume-Analyzer.git
-cd AI-Resume-Analyzer
+```text
+AI-Powered-Resume-ATS-Analyzer/
+│
+├── client/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   │   ├── AnalysisCard.jsx
+│   │   │   └── AnalysisSection.jsx
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Signup.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Demo.jsx
+│   │   │   ├── History.jsx
+│   │   │   └── AnalyzerWorkspace.jsx
+│   │   │
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   └── vercel.json
+│
+├── server/
+│   ├── config/
+│   │   └── db.js
+│   │
+│   ├── controllers/
+│   │   ├── analyzerController.js
+│   │   ├── authController.js
+│   │   └── messageController.js
+│   │
+│   ├── middleware/
+│   │   └── authMiddleware.js
+│   │
+│   ├── models/
+│   │   ├── User.js
+│   │   └── Analysis.js
+│   │
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── analyzerRoutes.js
+│   │   └── messageRoutes.js
+│   │
+│   ├── index.js
+│   └── package.json
+│
+└── README.md
 ```
 
-### 2. Backend
+---
+
+## Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/SivaTeja074/AI-Powered-Resume-ATS-Analyzer.git
+cd AI-Powered-Resume-ATS-Analyzer
+```
+
+### Backend Setup
 
 ```bash
 cd server
 npm install
 ```
 
-Create `server/.env`:
+Create `.env`:
 
 ```env
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-GEMINI_API_KEY=your_gemini_api_key
-CLIENT_URL=http://localhost:5173
 PORT=5000
+
+MONGODB_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_secret_key
+
+GEMINI_API_KEY=your_gemini_api_key
+
+CLIENT_URL=http://localhost:5173
 ```
 
-Start the API:
+Run backend:
 
 ```bash
 npm run dev
 ```
 
-The server runs at `http://localhost:5000`.
+---
 
-### 3. Frontend
-
-In a separate terminal:
+### Frontend Setup
 
 ```bash
 cd client
 npm install
 ```
 
-Create `client/.env`:
+Create `.env`:
 
 ```env
-VITE_API_BASE_URL=http://localhost:5000
+VITE_API_URL=http://localhost:5000
 ```
 
-Start the app:
+Run frontend:
 
 ```bash
 npm run dev
 ```
 
-The client runs at `http://localhost:5173`.
-
 ---
 
-## Environment Variables
+## Available Scripts
 
-| Variable | Location | Description |
-| --- | --- | --- |
-| `MONGODB_URI` | server | MongoDB connection string |
-| `JWT_SECRET` | server | Secret for signing auth tokens |
-| `GEMINI_API_KEY` | server | Google Gemini API key |
-| `CLIENT_URL` | server | Allowed frontend origin for CORS |
-| `PORT` | server | API port (default: `5000`) |
-| `VITE_API_BASE_URL` | client | Backend base URL |
+### Frontend
 
----
-
-## How It Works
-
-```text
-React Frontend → Express API → MongoDB + Google Gemini
+```bash
+npm run dev
+npm run build
+npm run preview
 ```
 
-1. The user submits resume text or a PDF, optionally with a job description.
-2. The backend extracts PDF text when needed and sends a structured prompt to Gemini.
-3. Gemini returns JSON with scores, keywords, and suggestions.
-4. Authenticated users can save analyses to MongoDB and revisit them from the dashboard.
+### Backend
+
+```bash
+npm run dev
+npm start
+```
 
 ---
 
-## API Overview
+## API Endpoints
 
-| Method | Endpoint | Auth | Description |
-| --- | --- | --- | --- |
-| `POST` | `/api/analyzer` | Optional | Analyze resume (text or PDF upload) |
-| `POST` | `/api/analyzer/save` | Required | Save an analysis |
-| `GET` | `/api/analyzer/history` | Required | List saved analyses |
-| `DELETE` | `/api/analyzer/:id` | Required | Delete a saved analysis |
-| `POST` | `/api/auth/signup` | — | Create account |
-| `POST` | `/api/auth/login` | — | Sign in |
+### Authentication
+
+```http
+POST /api/auth/register
+POST /api/auth/login
+```
+
+### Resume Analysis
+
+```http
+POST /api/analyzer/analyze
+GET  /api/analyzer/history
+```
+
+### Health Check
+
+```http
+GET /api/health
+```
 
 ---
 
-## Notes
+## Deployment
 
-- The first backend request may be slow on Render's free tier (cold start).
-- Demo mode runs analysis without saving results to the database.
-- A valid `GEMINI_API_KEY` is required for resume analysis.
+### Frontend (Vercel)
+
+Build Command:
+
+```bash
+npm run build
+```
+
+Output Directory:
+
+```text
+dist
+```
+
+### Backend (Render)
+
+Build Command:
+
+```bash
+npm install
+```
+
+Start Command:
+
+```bash
+npm start
+```
+
+---
+
+## Future Improvements
+
+- Resume version comparison
+- Multiple job description matching
+- AI-generated resume rewriting
+- Cover letter generation
+- Interview preparation assistant
+- Skill gap analysis
+- Export reports as PDF
+
+---
+
+## Author
+
+Talari Siva Teja
+
+B.Tech Student | Full Stack Developer | AI Enthusiast
+
