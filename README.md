@@ -3,7 +3,11 @@
 ## Live Demo
 
 🌐 [Live Application](https://ai-powered-resume-ats-analyzer.vercel.app)
+
 ⚙️ [Backend API](https://ai-powered-resume-ats-analyzer.onrender.com)
+
+> Upload a resume, analyze ATS compatibility, identify missing keywords, and receive AI-powered feedback using Google Gemini AI.
+
 
 ## Overview
 AI-Powered Resume ATS Analyzer is a full-stack web application that helps students, fresh graduates, and job seekers evaluate their resumes using Generative AI. The platform analyzes resume content, compares it with a target job description, calculates ATS compatibility, identifies missing keywords, and provides actionable recommendations to improve interview readiness.
