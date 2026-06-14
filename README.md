@@ -3,7 +3,6 @@
 ## Live Demo
 
 🌐 [Live Application](https://ai-powered-resume-ats-analyzer.vercel.app)
-
 ⚙️ [Backend API](https://ai-powered-resume-ats-analyzer.onrender.com)
 
 ## Overview
