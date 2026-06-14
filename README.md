@@ -1,5 +1,13 @@
 # AI-Powered Resume ATS Analyzer
 
+## Live Demo
+
+Frontend:
+https://ai-powered-resume-ats-analyzer.vercel.app
+
+Backend:
+https://ai-powered-resume-ats-analyzer.onrender.com
+
 ## Overview
 AI-Powered Resume ATS Analyzer is a full-stack web application that helps students, fresh graduates, and job seekers evaluate their resumes using Generative AI. The platform analyzes resume content, compares it with a target job description, calculates ATS compatibility, identifies missing keywords, and provides actionable recommendations to improve interview readiness.
 
